@@ -3,16 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JobSphere - Your professional networking and job search platform">
+    <title>JobSphere - Professional Network</title>
     <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>JobSphere</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         * {
             padding: 0;
             margin: 0;
             box-sizing: border-box;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         .animate-slide-up {
             animation: slideUp 0.8s ease-out;
@@ -27,223 +33,382 @@
         .hover-scale:hover {
             transform: scale(1.02);
         }
+        .nav-link {
+            transition: color 0.2s ease;
+        }
+        .nav-link:hover {
+            color: #4f46e5;
+        }
+        .post-card {
+            transition: box-shadow 0.3s ease;
+        }
+        .post-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .message-item:hover {
+            background-color: #f9fafb;
+        }
+        @media (max-width: 1280px) {
+            .main-container {
+                flex-direction: column;
+            }
+            .left-column, .right-column {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 1rem;
+            }
+            .nav-links a {
+                margin: 0.5rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-stone-100">
-  <nav class="flex items-center justify-between px-40 py-2 bg-white">
-    <!-- Search -->
-    <section>
-      <input placeholder="Search" class="ml-4 px-2 py-1 border rounded">
-    </section>
+  <nav class="flex flex-wrap items-center justify-between px-4 py-2 bg-white shadow-sm md:px-8 lg:px-40">
+    <!-- Logo -->
+    <div class="flex items-center">
+      <h1 class="text-xl font-bold text-indigo-900 mr-4">JobSphere</h1>
+      <!-- Search -->
+      <div class="relative hidden md:block">
+        <input placeholder="Search" class="pl-8 pr-4 py-1 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+               aria-label="Search jobs, people, or posts">
+        <i class="fa-solid fa-search absolute left-2 top-2 text-gray-400"></i>
+      </div>
+    </div>
+
+    <!-- Mobile Search -->
+    <div class="relative w-full mt-2 md:hidden">
+      <input placeholder="Search" class="w-full pl-8 pr-4 py-1 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+             aria-label="Search jobs, people, or posts">
+      <i class="fa-solid fa-search absolute left-2 top-2 text-gray-400"></i>
+    </div>
 
     <!-- Navigation Links -->
-    <section class="flex items-center space-x-6 text-sm">
-      <a href="#" class="flex flex-col items-center text-gray-500"><i class="fa-solid fa-house text-indigo-900 text-lg"></i> Home</a>
-      <a href="#" class="flex flex-col items-center text-gray-500"><i class="fa-solid fa-user-group text-indigo-900 text-lg"></i> Who You Know</a>
-      <a href="#" class="flex flex-col items-center text-gray-500"><i class="fa-solid fa-briefcase text-indigo-900 text-lg"></i> Jobs</a>
-      <a href="#" class="flex flex-col items-center text-gray-500"><i class="fa-solid fa-comment-dots text-indigo-900 text-lg"></i> Chat</a>
-      <a href="#" class="flex flex-col items-center text-gray-500"><i class="fa-solid fa-bell text-indigo-900 text-lg"></i> Notifications</a>
-      <a href="#" class="flex flex-col items-center text-gray-500">
-        <img class="w-7 h-7 rounded-full object-cover" src="images/jdoe-removebg-preview.png" alt="">
-        <p class="text-sm">User</p>
+    <div class="flex items-center space-x-4 text-sm mt-2 md:mt-0">
+      <a href="#" class="nav-link flex flex-col items-center text-gray-500 hover:text-indigo-900" aria-label="Home">
+        <i class="fa-solid fa-house text-indigo-900 text-lg"></i>
+        <span class="text-xs mt-1">Home</span>
       </a>
-      <a href="#" class="flex flex-col items-center"><i class="fa-solid fa-briefcase text-indigo-900 text-lg"></i><p>For Business</p></a>
-      <a href="#" class="text-red-600 font-semibold">Reactivate Premium: <br> 50% off</a>
-    </section>
+      <a href="#" class="nav-link flex flex-col items-center text-gray-500 hover:text-indigo-900" aria-label="Network">
+        <i class="fa-solid fa-user-group text-indigo-900 text-lg"></i>
+        <span class="text-xs mt-1">Network</span>
+      </a>
+      <a href="#" class="nav-link flex flex-col items-center text-gray-500 hover:text-indigo-900" aria-label="Jobs">
+        <i class="fa-solid fa-briefcase text-indigo-900 text-lg"></i>
+        <span class="text-xs mt-1">Jobs</span>
+      </a>
+      <a href="#" class="nav-link flex flex-col items-center text-gray-500 hover:text-indigo-900" aria-label="Messaging">
+        <i class="fa-solid fa-comment-dots text-indigo-900 text-lg"></i>
+        <span class="text-xs mt-1">Messages</span>
+      </a>
+      <a href="#" class="nav-link flex flex-col items-center text-gray-500 hover:text-indigo-900" aria-label="Notifications">
+        <i class="fa-solid fa-bell text-indigo-900 text-lg"></i>
+        <span class="text-xs mt-1">Notifications</span>
+      </a>
+      <div class="relative group">
+        <button class="nav-link flex flex-col items-center text-gray-500 hover:text-indigo-900 focus:outline-none" aria-label="User menu">
+          <img class="w-7 h-7 rounded-full object-cover" src="images/jdoe-removebg-preview.png" alt="User profile">
+          <span class="text-xs mt-1">Me</span>
+        </button>
+        <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden group-hover:block">
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign out</a>
+        </div>
+      </div>
+      <a href="#" class="hidden md:flex nav-link flex-col items-center text-gray-500 hover:text-indigo-900" aria-label="For Business">
+        <i class="fa-solid fa-briefcase text-indigo-900 text-lg"></i>
+        <span class="text-xs mt-1">For Business</span>
+      </a>
+      <a href="#" class="hidden md:block text-red-600 font-semibold text-xs hover:text-red-700" aria-label="Premium offer">
+        Reactivate Premium:<br>50% off
+      </a>
+    </div>
   </nav>
 
-  <main class="flex h-screen mx-40 my-5 gap-4">
+  <main class="flex-1 flex flex-col lg:flex-row mx-auto w-full max-w-7xl px-4 my-5 gap-4 main-container">
     <!-- Left Column -->
-    <section class="flex flex-col flex-[2] min-w-[700px] p-4 space-y-4">
-      <section class="bg-white rounded-lg shadow-md p-6 max-w-3xl mx-auto w-full animate-slide-up">
+    <section class="flex-1 lg:flex-[2] lg:min-w-[700px] p-4 space-y-4 left-column">
+      <!-- Create Post -->
+      <section class="bg-white rounded-lg shadow-sm p-6 w-full animate-slide-up post-card">
+        <div class="flex items-start space-x-3">
+          <img src="images/jdoe-removebg-preview.png" alt="User profile" class="w-10 h-10 rounded-full object-cover">
+          <div class="flex-1">
             <textarea 
                 id="post-content" 
                 placeholder="Share a post, job, event, or article..." 
-                class="w-full p-4 border rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none" 
+                class="w-full p-3 border rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none" 
                 rows="3" 
                 aria-label="Create a new post"
             ></textarea>
-            <div class="flex justify-between items-center mt-4">
+            <div class="flex flex-col sm:flex-row justify-between items-center mt-4 space-y-3 sm:space-y-0">
+              <div class="flex space-x-2 w-full sm:w-auto">
+                <button class="flex items-center text-gray-500 hover:text-indigo-600 text-sm">
+                  <i class="fa-solid fa-image mr-2"></i> Photo
+                </button>
+                <button class="flex items-center text-gray-500 hover:text-indigo-600 text-sm">
+                  <i class="fa-solid fa-video mr-2"></i> Video
+                </button>
+                <button class="flex items-center text-gray-500 hover:text-indigo-600 text-sm">
+                  <i class="fa-solid fa-file mr-2"></i> Document
+                </button>
+              </div>
+              <div class="flex space-x-2 w-full sm:w-auto">
                 <select 
                     id="post-type" 
-                    class="px-4 py-2 border rounded-md text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500" 
+                    class="px-3 py-1 border rounded-md text-gray-600 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" 
                     aria-label="Select post type"
                 >
                     <option value="post">Post</option>
                     <option value="job">Job</option>
                     <option value="event">Event</option>
                     <option value="article">Article</option>
-                    <option value="project">Project</option>
-                    <option value="motivation">Motivation</option>
                 </select>
                 <button 
                     id="submit-post" 
-                    class="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition duration-200" 
+                    class="bg-indigo-600 text-white px-4 py-1 rounded-md hover:bg-indigo-700 transition duration-200 text-sm" 
                     aria-label="Share post"
                 >Post</button>
+              </div>
             </div>
-        </section>
-    <section class="posts flex flex-col max-w-3xl">
-        <div class="max-w-3xl bg-white rounded-lg shadow-md p-6 space-y-4">
-        <!-- Post Header -->
-            <header class="flex items-center space-x-4">
-                <img src="images/jdoe-removebg-preview.png" alt="User Profile" class="w-12 h-12 rounded-full object-cover" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Posts Feed -->
+      <div class="space-y-4 posts">
+        <!-- Post 1 -->
+        <article class="bg-white rounded-lg shadow-sm p-6 space-y-4 post-card">
+          <!-- Post Header -->
+          <header class="flex items-start space-x-4">
+            <img src="images/jdoe-removebg-preview.png" alt="Jake Doe's profile" class="w-12 h-12 rounded-full object-cover" />
+            <div class="flex-1">
+              <div class="flex justify-between items-start">
                 <div>
-                <p class="font-semibold text-lg">Jake Doe</p>
+                  <p class="font-semibold text-lg">Jake Doe</p>
+                  <p class="text-gray-500 text-sm">Data Scientist at TechCorp</p>
+                </div>
                 <p class="text-gray-500 text-sm">3 minutes ago</p>
-                </div>
-            </header>
-
-            <!-- Post Tags -->
-            <div class="flex space-x-2">
-                <span class="bg-green-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Job</span>
-                <span class="bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Data Science</span>
+              </div>
             </div>
+          </header>
 
-            <!-- Post Content -->
-            <p class="text-gray-700 leading-relaxed">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                Rem ex tenetur assumenda iusto illo facere odio, minima ea obcaecati enim, 
-                libero nam temporibus tempora magni ratione iure corrupti expedita nobis.
-            </p>
-            <!-- Post Image -->
-            <img src="images/jdoe-removebg-preview.png" alt="Post image" class="w-full max-h-96 object-cover rounded-md" />
+          <!-- Post Tags -->
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-green-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Job</span>
+            <span class="bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Data Science</span>
+            <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">Remote</span>
+          </div>
 
-            <!-- Post Actions -->
-            <div class="flex space-x-8 text-gray-600 text-sm font-medium">
-                <button class="hover:text-blue-600"><i class="fa fa-thumbs-up mr-1"></i>Like (60)</button>
-                <button class="hover:text-blue-600"><i class="fa fa-comment mr-1"></i>Comment (12)</button>
-                <button class="hover:text-blue-600"><i class="fa fa-share mr-1"></i>Share</button>
-            </div>
-            </section>
-        </div>
-        <div class="max-w-3xl bg-white rounded-lg shadow-md p-6 space-y-4">
-        <!-- Post Header -->
-            <header class="flex items-center space-x-4">
-                <img src="images/avatar-jessica.jpeg" alt="User Profile" class="w-12 h-12 rounded-full object-cover" />
+          <!-- Post Content -->
+          <p class="text-gray-700 leading-relaxed">
+            We're hiring a Senior Data Scientist at TechCorp! If you have experience with Python, SQL, and machine learning, 
+            we'd love to hear from you. This is a fully remote position with competitive compensation and great benefits.
+          </p>
+          
+          <!-- Post Image -->
+          <img src="images/jdoe-removebg-preview.png" alt="TechCorp office" class="w-full max-h-96 object-cover rounded-md" 
+               aria-label="TechCorp office image"/>
+
+          <!-- Post Actions -->
+          <div class="flex flex-wrap justify-between pt-3 text-gray-600 text-sm font-medium border-t">
+            <button class="flex items-center hover:text-blue-600 px-2 py-1 rounded hover:bg-gray-50" aria-label="Like this post">
+              <i class="fa fa-thumbs-up mr-1"></i> Like (60)
+            </button>
+            <button class="flex items-center hover:text-blue-600 px-2 py-1 rounded hover:bg-gray-50" aria-label="Comment on this post">
+              <i class="fa fa-comment mr-1"></i> Comment (12)
+            </button>
+            <button class="flex items-center hover:text-blue-600 px-2 py-1 rounded hover:bg-gray-50" aria-label="Share this post">
+              <i class="fa fa-share mr-1"></i> Share
+            </button>
+            <button class="flex items-center hover:text-blue-600 px-2 py-1 rounded hover:bg-gray-50" aria-label="Save this post">
+              <i class="fa fa-bookmark mr-1"></i> Save
+            </button>
+          </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="bg-white rounded-lg shadow-sm p-6 space-y-4 post-card">
+          <!-- Post Header -->
+          <header class="flex items-start space-x-4">
+            <img src="images/avatar-jessica.jpeg" alt="Jessica's profile" class="w-12 h-12 rounded-full object-cover" />
+            <div class="flex-1">
+              <div class="flex justify-between items-start">
                 <div>
-                <p class="font-semibold text-lg">Avatar Jessica</p>
-                <p class="text-gray-500 text-sm">2 weeks ago</p>
+                  <p class="font-semibold text-lg">Jessica Chen</p>
+                  <p class="text-gray-500 text-sm">Career Coach | Consultant</p>
                 </div>
-            </header>
-
-            <!-- Post Tags -->
-            <div class="flex space-x-2">
-                <span class="bg-purple-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Career Tips</span>
-                <span class="bg-purple-900 text-white text-xs font-semibold px-3 py-1 rounded-full">Article</span>
-                <span class="bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Consulting</span>
+                <p class="text-gray-500 text-sm">2 weeks ago</p>
+              </div>
             </div>
+          </header>
 
-            <!-- Post Content -->
-            <p class="text-gray-700 leading-relaxed">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                Rem ex tenetur assumenda iusto illo facere odio, minima ea obcaecati enim, 
-                libero nam temporibus tempora magni ratione iure corrupti expedita nobis.
-            </p>
+          <!-- Post Tags -->
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-purple-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Career Tips</span>
+            <span class="bg-purple-900 text-white text-xs font-semibold px-3 py-1 rounded-full">Article</span>
+            <span class="bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">Consulting</span>
+          </div>
 
-            <!-- Post Image -->
-            <img src="images/consulting.jpeg" alt="Post image" class="w-full max-h-96 object-cover rounded-md" />
+          <!-- Post Content -->
+          <p class="text-gray-700 leading-relaxed">
+            Just published my latest article on navigating career transitions in the tech industry. 
+            Whether you're moving from engineering to product management or considering a complete career pivot, 
+            these strategies can help you make a smooth transition.
+          </p>
+          
+          <!-- Post Image -->
+          <img src="images/consulting.jpeg" alt="Career transition article" class="w-full max-h-96 object-cover rounded-md" 
+               aria-label="Career transition article image"/>
 
-            <!-- Post Actions -->
-            <div class="flex space-x-8 text-gray-600 text-sm font-medium">
-                <button class="hover:text-blue-600"><i class="fa fa-thumbs-up mr-1"></i>Like (1072)</button>
-                <button class="hover:text-blue-600"><i class="fa fa-comment mr-1"></i>Comment (290)</button>
-                <button class="hover:text-blue-600"><i class="fa fa-share mr-1"></i>Share</button>
-            </div>
-            </section>
-        </div>
+          <!-- Post Actions -->
+          <div class="flex flex-wrap justify-between pt-3 text-gray-600 text-sm font-medium border-t">
+            <button class="flex items-center hover:text-blue-600 px-2 py-1 rounded hover:bg-gray-50" aria-label="Like this post">
+              <i class="fa fa-thumbs-up mr-1"></i> Like (1,072)
+            </button>
+            <button class="flex items-center hover:text-blue-600 px-2 py-1 rounded hover:bg-gray-50" aria-label="Comment on this post">
+              <i class="fa fa-comment mr-1"></i> Comment (290)
+            </button>
+            <button class="flex items-center hover:text-blue-600 px-2 py-1 rounded hover:bg-gray-50" aria-label="Share this post">
+              <i class="fa fa-share mr-1"></i> Share
+            </button>
+            <button class="flex items-center hover:text-blue-600 px-2 py-1 rounded hover:bg-gray-50" aria-label="Save this post">
+              <i class="fa fa-bookmark mr-1"></i> Save
+            </button>
+          </div>
+        </article>
+      </div>
     </section>
 
     <!-- Right Column (Sidebar) -->
-    <aside class="flex-1 p-4 space-y-4 flex flex-col lg:max-w-sm">
+    <aside class="w-full lg:w-80 xl:w-96 space-y-4 right-column">
       <!-- Daily Motivation -->
-      <section class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-2xl font-semibold text-center rounded-lg p-6 flex items-center justify-center h-24 animate-slide-up">
-        A journey of a thousand miles begins with one step
+      <section class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-lg font-semibold text-center rounded-lg p-6 animate-slide-up">
+        <blockquote>
+          "A journey of a thousand miles begins with one step"
+          <footer class="text-sm font-normal mt-2">- Lao Tzu</footer>
+        </blockquote>
       </section>
 
       <!-- Current Jobs -->
-      <section class="bg-white rounded-lg p-6 shadow-md animate-slide-up" style="animation-delay: 0.2s;">
-        <header class="text-indigo-900 font-bold text-xl mb-2">Open Positions</header>
-        <hr>
-        <div id="job-list" class="space-y-4 mt-4">
-          <div class="job-card">
-            <p class="font-bold text-indigo-900">Business Process Analyst</p>
-            <div class="flex flex-wrap items-center gap-1">
-                <p class="text-gray-800">Fake Consulting</p>
-                <p class="text-gray-500">South Africa, Gauteng, Pretoria</p>
-                <p class="bg-green-600 py-1 px-2 rounded-full text-xs text-white font-semibold ml-2">Verified</p> <!--avoid scammer companies-->
+      <section class="bg-white rounded-lg p-6 shadow-sm animate-slide-up" style="animation-delay: 0.2s;">
+        <header class="flex justify-between items-center mb-4">
+          <h2 class="text-indigo-900 font-bold text-lg">Open Positions</h2>
+          <a href="#" class="text-indigo-600 text-sm hover:underline" aria-label="See all jobs">See all</a>
+        </header>
+        <hr class="border-gray-200 mb-4">
+        <div id="job-list" class="space-y-4">
+          <article class="job-card p-4 hover:bg-gray-50 rounded-lg transition duration-200">
+            <h3 class="font-bold text-indigo-900">Business Process Analyst</h3>
+            <div class="flex flex-wrap items-center gap-1 mt-1">
+              <p class="text-gray-800 text-sm">Fake Consulting</p>
+              <span class="text-gray-500 text-xs">•</span>
+              <p class="text-gray-500 text-sm">Pretoria, Gauteng</p>
             </div>
-            <div class="flex flex-wrap gap-2 mt-2">
-                <span class="bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs">Consulting</span>
-                <span class="bg-gray-200 text-gray-700 px-2 py-1 rounded-full text-xs">On-site</span>
+            <div class="flex items-center mt-1">
+              <p class="bg-green-600 py-0.5 px-2 rounded-full text-xs text-white font-semibold">Verified</p>
             </div>
-            <p class="text-gray-600 mt-2 text-sm">Top skills: <span class="text-indigo-900">#Communication  #SQL  #Python  #CI/CD</span></p> <!--To limit recruiters to only highlight top 5 not write the whole industry requirements-->
-            <p class="text-gray-600 text-sm mt-2">Exprience : 1-3 years</p>
-            <button id="filter-jobs" class="mt-4 bg-indigo-600 text-white px-4 py-2 rounded-md w-full hover:bg-indigo-700 transition duration-200 text-xs" aria-label="More jobs">More Jobs</button>
-        </div>
-        </div>
-      </section>
-      <section class="bg-white rounded-lg p-6 shadow-md animate-slide-up" style="animation-delay: 0.2s;">
-        <header class="text-indigo-900 font-bold text-xl mb-2">Skill Upgrade</header>
-        <hr>
-        <div id="skill-upgrade-list" class="space-y-4 mt-4">
-          <div class="skill-card">
-            <img src="images/python3.png" class="w-[300px] h-[180px]"/>
-            <p class="font-bold text-lg mt-2 text-indigo-900">Python for Non-Programmers</p>
-            <div class="flex flex-wrap gap-2 mt-2">
-                <span class="bg-indigo-200 text-gray-700 px-2 py-1 rounded-full text-xs font-semibold">2h 11m</span>
-                <span class="bg-indigo-200 text-gray-700 px-2 py-1 rounded-full text-xs font-semibold">Beginner</span>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full text-xs">Consulting</span>
+              <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full text-xs">On-site</span>
+              <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full text-xs">Mid-level</span>
             </div>
-            <div class="flex flex-wrap items-center gap-2 mt-2 ">
-                <span class="flex items-center gap-1">
-                  <p>4.8</p>
-                  <i class="fa-solid fa-star text-yellow-700 text-sm"></i>
-                  <i class="fa-solid fa-star text-yellow-700 text-sm"></i>
-                  <i class="fa-solid fa-star text-yellow-700 text-sm"></i>
-                  <i class="fa-solid fa-star text-yellow-700 text-sm"></i>
-                  <i class="fa-solid fa-star text-yellow-700 text-sm"></i>
-                </span>
-                <span class="text-gray-700 text-sm font-semibold">(14,316)</span>
-            </div>
-            <button id="filter-jobs" class="mt-4 bg-indigo-600 text-white px-4 py-2 rounded-md w-full hover:bg-indigo-700 transition duration-200 text-xs" aria-label="More Courses">More Courses</button>
-          </div>
+            <p class="text-gray-600 mt-3 text-sm">Top skills: 
+              <span class="text-indigo-900">#Communication #SQL #Python #CI/CD</span>
+            </p>
+            <p class="text-gray-600 text-sm mt-1">Experience: 1-3 years</p>
+            <button class="mt-4 bg-indigo-600 text-white px-4 py-2 rounded-md w-full hover:bg-indigo-700 transition duration-200 text-sm" 
+                    aria-label="Apply for Business Process Analyst position">
+              Apply Now
+            </button>
+          </article>
         </div>
       </section>
-      <section class="flex flex-col gap-2 bg-white p-6 rounded-lg shadow-md animate-slide-up" style="animation-delay: 0.6s;">
-          <header class="text-xl text-indigo-900 font-semibold mb-4">Messages</header>
-          <hr class="border-gray-200">
-          <div class="mt-4 space-y-4">
-              <a href="#" class="flex items-center hover:bg-gray-50 p-2 rounded-md transition duration-200" aria-label="View conversation with Innocent Nhamo">
-                  <img src="images/profile.jpeg" class="w-12 h-12 rounded-full bg-indigo-200 mr-4" aria-hidden="true"/>
-                  <div class="flex flex-col flex-1">
-                      <div class="flex items-center justify-between mb-1">
-                          <p class="font-bold text-indigo-900 truncate">Innocent Nhamo</p>
-                          <p class="text-gray-500 text-xs">16:30</p>
-                      </div>
-                      <div class="flex items-center justify-between">
-                          <p class="text-gray-400 text-sm truncate">Oh! Tough luck</p>
-                          <p class="bg-indigo-700 rounded-full text-center px-2 py-1 text-xs text-white font-bold min-w-[24px]">2</p>
-                      </div>
-                  </div>
-              </a>
-              <hr class="border-gray-200">
-              <a href="#" class="flex items-center hover:bg-gray-50 p-2 rounded-md transition duration-200" aria-label="View conversation with Jake Doe">
-                   <img src="images/jdoe.jpg" class="w-12 h-12 rounded-full bg-indigo-200 mr-4" aria-hidden="true"/>
-                  <div class="flex flex-col flex-1">
-                      <div class="flex items-center justify-between mb-1">
-                          <p class="font-bold text-indigo-900 truncate">Jake Doe</p>
-                          <p class="text-gray-500 text-xs">Yesterday</p>
-                      </div>
-                      <div class="flex items-center justify-between">
-                          <p class="text-gray-400 text-sm truncate">Zoom call <i class="fa-solid fa-video ml-1"></i></p>
-                      </div>
-                  </div>
-              </a>
-          </div>
-          <button class="mt-4 bg-indigo-600 text-white px-4 py-2 rounded-md w-full hover:bg-indigo-700 transition duration-200" aria-label="Start a new message">New Message</button>
+
+      <!-- Skill Upgrade -->
+      <section class="bg-white rounded-lg p-6 shadow-sm animate-slide-up" style="animation-delay: 0.2s;">
+        <header class="flex justify-between items-center mb-4">
+          <h2 class="text-indigo-900 font-bold text-lg">Skill Upgrade</h2>
+          <a href="#" class="text-indigo-600 text-sm hover:underline" aria-label="Browse all courses">Browse all</a>
+        </header>
+        <hr class="border-gray-200 mb-4">
+        <div id="skill-upgrade-list" class="space-y-4">
+          <article class="skill-card">
+            <img src="images/python3.png" alt="Python course" class="w-full h-auto rounded-md" />
+            <h3 class="font-bold text-lg mt-3 text-indigo-900">Python for Non-Programmers</h3>
+            <div class="flex flex-wrap gap-2 mt-2">
+              <span class="bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-full text-xs font-semibold">2h 11m</span>
+              <span class="bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-full text-xs font-semibold">Beginner</span>
+            </div>
+            <div class="flex items-center gap-2 mt-2">
+              <div class="flex items-center">
+                <span class="text-yellow-600 text-sm">★★★★★</span>
+              </div>
+              <span class="text-gray-700 text-sm font-semibold">(14,316)</span>
+            </div>
+            <button class="mt-4 bg-indigo-600 text-white px-4 py-2 rounded-md w-full hover:bg-indigo-700 transition duration-200 text-sm" 
+                    aria-label="Enroll in Python for Non-Programmers course">
+              Enroll Now
+            </button>
+          </article>
+        </div>
+      </section>
+
+      <!-- Messages -->
+      <section class="bg-white rounded-lg p-6 shadow-sm animate-slide-up" style="animation-delay: 0.6s;">
+        <header class="flex justify-between items-center mb-4">
+          <h2 class="text-indigo-900 font-bold text-lg">Messages</h2>
+          <a href="#" class="text-indigo-600 text-sm hover:underline" aria-label="See all messages">See all</a>
+        </header>
+        <hr class="border-gray-200 mb-4">
+        <div class="space-y-3">
+          <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-50 transition duration-200 message-item" 
+             aria-label="Chat with Innocent Nhamo">
+            <img src="images/profile.jpeg" alt="Innocent Nhamo" class="w-12 h-12 rounded-full mr-3" />
+            <div class="flex-1 min-w-0">
+              <div class="flex justify-between">
+                <p class="font-semibold text-indigo-900 truncate">Innocent Nhamo</p>
+                <p class="text-gray-500 text-xs whitespace-nowrap ml-2">16:30</p>
+              </div>
+              <div class="flex justify-between">
+                <p class="text-gray-500 text-sm truncate">Oh! Tough luck</p>
+                <span class="bg-indigo-600 rounded-full text-center px-1.5 py-0.5 text-xs text-white font-bold min-w-[20px]">2</span>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-50 transition duration-200 message-item" 
+             aria-label="Chat with Jake Doe">
+            <img src="images/jdoe.jpg" alt="Jake Doe" class="w-12 h-12 rounded-full mr-3" />
+            <div class="flex-1 min-w-0">
+              <div class="flex justify-between">
+                <p class="font-semibold text-indigo-900 truncate">Jake Doe</p>
+                <p class="text-gray-500 text-xs whitespace-nowrap ml-2">Yesterday</p>
+              </div>
+              <div class="flex justify-between">
+                <p class="text-gray-500 text-sm truncate flex items-center">
+                  <span>Zoom call</span>
+                  <i class="fa-solid fa-video ml-1 text-indigo-600"></i>
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <button class="mt-4 bg-indigo-600 text-white px-4 py-2 rounded-md w-full hover:bg-indigo-700 transition duration-200 text-sm" 
+                aria-label="Start a new message">
+          New Message
+        </button>
       </section>
     </aside>
   </main>
 </body>
-
 </html>
